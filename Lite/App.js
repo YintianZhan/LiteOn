@@ -7,44 +7,70 @@
  * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+ import React, {Component} from 'react';
+ import {Platform, StyleSheet, Text, View} from 'react-native';
+ import { Icon } from 'react-native-elements'
+ import BottomNavigation, {
+   FullTab
+ } from 'react-native-material-bottom-navigation'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+ export default class App extends React.Component {
+   tabs = [
+     {
+       key: 'dashboard',
+       icon: 'dashboard',
+       label: 'Dashboard',
+       barColor: '#388E3C',
+       pressColor: 'rgba(255, 255, 255, 0.16)'
+     },
+     {
+       key: 'search',
+       icon: 'search',
+       label: 'Search',
+       barColor: '#B71C1C',
+       pressColor: 'rgba(255, 255, 255, 0.16)'
+     },
+     {
+       key: 'discussion',
+       icon: 'chat',
+       label: 'Discussion',
+       barColor: '#E64A19',
+       pressColor: 'rgba(255, 255, 255, 0.16)'
+     },
+     {
+       key: 'profile',
+       icon: 'person',
+       label: 'Profile',
+       barColor: '#FFA500', //gold
+       pressColor: 'rgba(255, 255, 255, 0.16)'
+     }
+   ]
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
-}
+   renderIcon = icon => ({ isActive }) => (
+     <Icon size={24} color="white" name={icon} />
+   )
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+   renderTab = ({ tab, isActive }) => (
+     <FullTab
+       isActive={isActive}
+       key={tab.key}
+       label={tab.label}
+       renderIcon={this.renderIcon(tab.icon)}
+     />
+   )
+
+   render() {
+     return (
+       <View style={{ flex: 1 }}>
+         <View style={{ flex: 1 }}>
+           {/* Your screen contents depending on current tab. */}
+         </View>
+         <BottomNavigation
+           onTabPress={newTab => this.setState({ activeTab: newTab.key })}
+           renderTab={this.renderTab}
+           tabs={this.tabs}
+         />
+       </View>
+     )
+   }
+ }
