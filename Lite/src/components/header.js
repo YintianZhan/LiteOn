@@ -1,10 +1,26 @@
-//import libraries
-import React from 'react'
-import { Text } from 'react-native'
-//make a component
-const Header = () =>{
-  return <Text>Discover!</Text>
-};
+import React, { Component } from 'react';
+import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 
-//make the compoent available to other parts of the app
-export default Header;
+export default class HeaderIconExample extends Component {
+  render() {
+    return (
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name='arrow-back' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Discover</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Right>
+        </Header>
+      </Container>
+    )
+  }
+}
