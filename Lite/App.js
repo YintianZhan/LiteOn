@@ -9,16 +9,18 @@
 
 import React, {Component} from 'react'
 import {View} from 'react-native'
-import Header from './src/components/header'
+import HeaderExample from './src/components/header'
 import NavBar from './src/components/navbar'
+import Picker from './src/components/picker'
 
 export default class App extends Component{
     render() {
       return (
         <View style={{ flex: 1 }}>
-          <Header />
+          <HeaderExample />
+          <Picker />
           <NavBar />
-       </View>
+        </View>
       )
     }
  }
