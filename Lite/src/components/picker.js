@@ -3,8 +3,8 @@ import { Image } from 'react-native';
 import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
 const cards = [
   {
-    text: 'Card One',
-    name: 'One',
+    text: 'Ragtime',
+    name: 'Ragtime',
     image: require('./img/Ragtime.png'),
   }
 ];
@@ -22,7 +22,7 @@ export default class Picker extends Component {
                     <Thumbnail source={item.image} />
                     <Body>
                       <Text>{item.text}</Text>
-                      <Text note>NativeBase</Text>
+                      <Text note>DolphinShow</Text>
                     </Body>
                   </Left>
                 </CardItem>
