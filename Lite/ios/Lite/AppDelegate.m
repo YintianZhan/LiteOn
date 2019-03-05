@@ -9,26 +9,31 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-
+ #import <ReactNativeNavigation/ReactNativeNavigation.h>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  NSURL *jsCodeLocation;
+ // NSURL *jsCodeLocation;
+ //
+ // jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+ //
+ // RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+ //                                                     moduleName:@"Lite"
+ //                                              initialProperties:nil
+ //                                                  launchOptions:launchOptions];
+ // rootView.backgroundColor = [UIColor blackColor];
+ //
+ // self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+ // UIViewController *rootViewController = [UIViewController new];
+ // rootViewController.view = rootView;
+ // self.window.rootViewController = rootViewController;
+ // [self.window makeKeyAndVisible];
+ // return YES;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+    NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+    [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
 
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"Lite"
-                                               initialProperties:nil
-                                                   launchOptions:launchOptions];
-  rootView.backgroundColor = [UIColor blackColor];
-
-  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [UIViewController new];
-  rootViewController.view = rootView;
-  self.window.rootViewController = rootViewController;
-  [self.window makeKeyAndVisible];
   return YES;
 }
 

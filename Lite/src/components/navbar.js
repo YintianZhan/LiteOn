@@ -11,8 +11,9 @@ export default class NavBar extends Component {
       key: 'dashboard',
       icon: 'dashboard',
       label: 'Dashboard',
-      barColor: '#388E3C',
-      pressColor: 'rgba(255, 255, 255, 0.16)'
+      // TintColor: 'tomato',
+      barColor: 'grey',
+      pressColor: 'lightgrey'
     },
     {
       key: 'search',
@@ -21,13 +22,13 @@ export default class NavBar extends Component {
       barColor: '#B71C1C',
       pressColor: 'rgba(255, 255, 255, 0.16)'
     },
-    {
-      key: 'discussion',
-      icon: 'chat',
-      label: 'Discussion',
-      barColor: '#E64A19',
-      pressColor: 'rgba(255, 255, 255, 0.16)'
-    },
+    // {
+    //   key: 'discussion',
+    //   icon: 'chat',
+    //   label: 'Discussion',
+    //   barColor: '#E64A19',
+    //   pressColor: 'rgba(255, 255, 255, 0.16)'
+    // },
     {
       key: 'profile',
       icon: 'person',
@@ -38,7 +39,7 @@ export default class NavBar extends Component {
   ]
 
   renderIcon = icon => ({ isActive }) => (
-    <Icon size={24} color="white" name={icon} />
+    <Icon size={24} color="purple" name={icon} />
   )
 
   renderTab = ({ tab, isActive }) => (
