@@ -9,17 +9,15 @@ import FooterTabs from './components/footertab'
 export default class Home extends Component {
   render() {
     return (
-      <Container>
         <View style={{backgroundColor: '#586589', flex: 1}}>
             <HeaderExample />
             <View>
                 <Picker />
             </View>
         </View>
-        <View>
-          <FooterTabs />
-        </View>
-      </Container>
+        // <View>
+        //   <FooterTabs />
+        // </View>
     )
   }
 }

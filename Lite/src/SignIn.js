@@ -8,7 +8,7 @@ import {
   AsyncStorage
 } from 'react-native'
 
-import { goHome } from './components/navigation'
+import { goHome , goHomeOrg} from './components/navigation'
 import { USER_KEY } from './components/config'
 
 export default class SignIn extends Component {
@@ -18,13 +18,24 @@ export default class SignIn extends Component {
   onChangeText = (key, value) => {
     this.setState({ [key]: value })
   }
-  signIn = async () => {
+  signInInd = async () => {
     const { username, password } = this.state
     try {
        // login with provider
        const user = await AsyncStorage.setItem(USER_KEY, username)
        console.log('user successfully signed in!', user)
        goHome()
+    } catch (err) {
+      console.log('error:', err)
+    }
+  }
+  signInOrg = async () => {
+    const { username, password } = this.state
+    try {
+       // login with provider
+       const user = await AsyncStorage.setItem(USER_KEY, username)
+       console.log('organization successfully signed in!', user)
+       goHomeOrg()
     } catch (err) {
       console.log('error:', err)
     }
@@ -49,8 +60,12 @@ export default class SignIn extends Component {
           onChangeText={val => this.onChangeText('password', val)}
         />
         <Button
-          title='Sign In'
-          onPress={this.signIn}
+          title='Sign In as an Individual'
+          onPress={this.signInInd}
+        />
+        <Button
+          title='Sign In as an Organization'
+          onPress={this.signInOrg}
         />
       </View>
     )

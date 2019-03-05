@@ -22,6 +22,15 @@ export default class SignUp extends Component {
       console.log('error signing up: ', err)
     }
   }
+  signUpOrg = async () => {
+    const { username, password, email, phone_number } = this.state
+    try {
+      // here place your signup logic
+      console.log('organization successfully signed up!: ', success)
+    } catch (err) {
+      console.log('error signing up: ', err)
+    }
+  }
 
   render() {
     return (
@@ -56,8 +65,12 @@ export default class SignUp extends Component {
           onChangeText={val => this.onChangeText('phone_number', val)}
         />
         <Button
-          title='Sign Up'
+          title='Sign Up as an Individual'
           onPress={this.signUp}
+        />
+        <Button
+          title='Sign Up as an Organization'
+          onPress={this.signUpOrg}
         />
       </View>
     )
