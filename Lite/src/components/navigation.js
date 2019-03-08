@@ -158,14 +158,14 @@ export const goHomeOrg = () => Navigation.setRoot({
   }
 });
 
-export const goToEvent = () => Navigation.setRoot({
+export const goToEvent = (item) => Navigation.setRoot({
   root: {
     stack: {
-      id: 'Ragtime',
+      id: 'EventProfile',
       children: [
         {
           component: {
-            name: 'Ragtime',
+            name: 'EventProfile',
           }
         }
     ],
