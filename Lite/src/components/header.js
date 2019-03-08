@@ -16,7 +16,7 @@ export default class HeaderExample extends Component {
   }
   render() {
     return (
-        <Header style={{backgroundColor: '#171F33'}}>
+        <Header>
           <Left>
             <Button onPress={this.logout}
                     transparent>

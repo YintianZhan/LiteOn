@@ -13,7 +13,7 @@ export default class EventProfile extends Component {
     // let event = this.props.item;
     return (
       <View style={{backgroundColor: '#586589', flex: 1}}>
-        <Header style={{backgroundColor: '#171F33'}}>
+        <Header>
           <Left>
             <Button onPress={() => Navigation.dismissModal(this.props.componentId) }
                     transparent>

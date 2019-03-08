@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Container, Header, Content, Footer, FooterTab, Button } from 'native-base';
 import { Icon } from 'react-native-elements';
 import {Navigation} from 'react-native-navigation'
-export default class FooterTabs extends Component {
+
+export default class FooterTabsOrg extends Component {
   render() {
     return (
         <Footer style = {{ position: 'absolute', bottom: 0 }}>
@@ -34,7 +35,7 @@ export default class FooterTabs extends Component {
                       stack: {
                         children: [{
                           component: {
-                            name: 'PersonalProfile',
+                            name: 'OrgProfile',
                             options: {
                               topBar: {
                                 visible: false
@@ -45,6 +46,24 @@ export default class FooterTabs extends Component {
                       }
                     })}>
               <Icon name="person"
+                    color= '#586589'
+              />
+            </Button>
+            <Button onPress={() => Navigation.showModal({
+                      stack: {
+                        children: [{
+                          component: {
+                            name: 'CreateEvent',
+                            options: {
+                              topBar: {
+                                visible: false
+                              }
+                            }
+                          }
+                        }]
+                      }
+                    })}>
+              <Icon name="add"
                     color= '#586589'
               />
             </Button>
