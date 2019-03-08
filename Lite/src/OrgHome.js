@@ -4,7 +4,8 @@ import { Container, Footer }  from 'native-base';
 import HeaderExample from './components/header'
 import NavBar from './components/navbar'
 import Picker from './components/picker'
-import FooterTabs from './components/footertab'
+import FooterTabsOrg from './components/footertaborg'
+import { Navigation } from 'react-native-navigation'
 
 export default class Home extends Component {
   render() {
@@ -15,7 +16,7 @@ export default class Home extends Component {
                 <Picker />
             </View>
             <View style = {{width: '100%', height: 100, position: 'absolute', bottom: 0 }}>
-              <FooterTabs />
+              <FooterTabsOrg />
             </View>
         </View>
     )

@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { Button , Image } from 'react-native'
 import { Container, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
 import { goToEvent } from './navigation'
-const cards = [
-  {
-    text: 'Ragtime',
-    name: 'Ragtime',
-    image: require('./img/Ragtime.png'),
-  }
-];
+import { EventProfile } from '../event/EventProfile'
+import { Navigation } from 'react-native-navigation'
+
+
+const cards = require('../data/events.json')
 export default class Picker extends Component {
   goToEvent = async () => {
     try {
@@ -27,26 +25,41 @@ export default class Picker extends Component {
               <Card style={{ elevation: 3 }}>
                 <CardItem>
                   <Left>
-                    <Thumbnail source={item.image} />
+                    <Thumbnail source={{uri: item.image}} />
                     <Body>
                       <Text>{item.text}</Text>
-                      <Text note>DolphinShow</Text>
+                      <Text note>{item.organization}</Text>
                     </Body>
                   </Left>
                 </CardItem>
                 <CardItem cardBody>
-                  <Image style={{ height: 300, flex: 1 }} source={item.image} />
+                  <Image style={{ height: 300, flex: 1 }} source={{uri: item.image}} />
                 </CardItem>
                 <CardItem>
                   <Icon name="heart" style={{ color: '#ED4A6A' }} />
                   <Text>{item.name}</Text>
                 </CardItem>
                 <CardItem>
-                  <Button
-                    style={{fontSize: 20, color: 'green'}}
-                    onPress={() => this.goToEvent()}
-                    title="Info"
-                  />
+                  <Icon
+                    style={{ color: 'green'}}
+                    onPress={() => Navigation.showModal({
+                              stack: {
+                                children: [{
+                                  component: {
+                                    name: 'EventProfile',
+                                    passProps: {
+                                      event: item
+                                    },
+                                    options: {
+                                      topBar: {
+                                        visible: false
+                                      }
+                                    }
+                                  }
+                                }]
+                              }
+                            })}
+                    name= 'information-circle'/>
                 </CardItem>
               </Card>
             }

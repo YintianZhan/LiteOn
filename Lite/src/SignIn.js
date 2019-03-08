@@ -10,6 +10,7 @@ import {
 
 import { goHome , goHomeOrg} from './components/navigation'
 import { USER_KEY } from './components/config'
+import { Navigation } from 'react-native-navigation'
 
 export default class SignIn extends Component {
   state = {
@@ -66,6 +67,21 @@ export default class SignIn extends Component {
         <Button
           title='Sign In as an Organization'
           onPress={this.signInOrg}
+        />
+        <Button
+          title='Sign Up'
+          onPress={() => Navigation.push(this.props.componentId,{
+            component: {
+              name: 'SignUp',
+                options: {
+                  topBar: {
+                    title: {
+                      text: "Sign Up"
+                    }
+                  }
+                }
+            }
+          })}
         />
       </View>
     )
