@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button , Image } from 'react-native'
-import { Container, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import { Container, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Right, Body, Icon } from 'native-base';
 import { goToEvent } from './navigation'
 import { EventProfile } from '../event/EventProfile'
 import { Navigation } from 'react-native-navigation'
@@ -31,6 +31,29 @@ export default class Picker extends Component {
                       <Text note>{item.organization}</Text>
                     </Body>
                   </Left>
+                  <Right>
+                    <Icon
+                      size = {50}
+                      style={{ color: 'green'}}
+                      onPress={() => Navigation.showModal({
+                                stack: {
+                                  children: [{
+                                    component: {
+                                      name: 'EventProfile',
+                                      passProps: {
+                                        event: item
+                                      },
+                                      options: {
+                                        topBar: {
+                                          visible: false
+                                        }
+                                      }
+                                    }
+                                  }]
+                                }
+                              })}
+                      name= 'information-circle'/>
+                  </Right>
                 </CardItem>
                 <CardItem cardBody>
                   <Image style={{ height: 300, flex: 1 }} source={{uri: item.image}} />
@@ -38,28 +61,6 @@ export default class Picker extends Component {
                 <CardItem>
                   <Icon name="heart" style={{ color: '#ED4A6A' }} />
                   <Text>{item.name}</Text>
-                </CardItem>
-                <CardItem>
-                  <Icon
-                    style={{ color: 'green'}}
-                    onPress={() => Navigation.showModal({
-                              stack: {
-                                children: [{
-                                  component: {
-                                    name: 'EventProfile',
-                                    passProps: {
-                                      event: item
-                                    },
-                                    options: {
-                                      topBar: {
-                                        visible: false
-                                      }
-                                    }
-                                  }
-                                }]
-                              }
-                            })}
-                    name= 'information-circle'/>
                 </CardItem>
               </Card>
             }

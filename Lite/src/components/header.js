@@ -27,9 +27,6 @@ export default class HeaderExample extends Component {
             <Title>Discover</Title>
           </Body>
           <Right>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
           </Right>
         </Header>
 
