@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Title, Text, Button} from 'native-base';
-import { View, Image } from 'react-native';
+import { View, Image, ScrollView } from 'react-native';
 import { goHome } from './../components/navigation';
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
-// import DefaultTabBar from '../components/defaultTabBar';
+import Casts from './Casts'
 
 
 export default class EventProfile extends Component {
-  // static navigationOptions = {
-  //   headerMode: 'none'
-  // }
 
   render() {
-    // let event = this.props.item;
     return (
-      <View style={{backgroundColor: '#586589', flex: 1}}>
+      <ScrollView style={{backgroundColor: '#586589', flex: 1}}>
         <Header>
           <Left>
             <Button onPress={() => Navigation.dismissModal(this.props.componentId) }
@@ -51,17 +47,17 @@ export default class EventProfile extends Component {
           </Container>
         </View>
         <View style={contentContainer}>
-        <ScrollableTabView
-            style={{marginTop: 20, }}
-            initialPage={1}
-            renderTabBar={() => <DefaultTabBar />}
-            >
-            <Text tabLabel='INFO'>INFO</Text>
-            <Text tabLabel='CAST'>CAST</Text>
-            <Text tabLabel='COMMENTS'>COMMENTS</Text>
-        </ScrollableTabView>
-					</View>
-      </View>
+          <ScrollableTabView
+              style={{marginTop: 20, }}
+              initialPage={1}
+              renderTabBar={() => <DefaultTabBar />}
+          >
+              <Text tabLabel='INFO'>{this.props.event.description}</Text>
+              <Casts tabLabel='CAST' info={this.props.event.cast.casts} length = {this.props.event.cast.length}/>
+              <Text tabLabel='COMMENTS'>Comments</Text>
+          </ScrollableTabView>
+				</View>
+      </ScrollView>
     )
   }
 }
