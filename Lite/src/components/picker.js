@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Button , Image } from 'react-native'
 import { Container, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Right, Body, Icon } from 'native-base';
-import { goToEvent } from './navigation'
-import { EventProfile } from '../event/EventProfile'
-import { Navigation } from 'react-native-navigation'
+import { goToEvent } from './navigation';
+import { EventProfile } from '../event/EventProfile';
+import { Navigation } from 'react-native-navigation';
+// import 'dateformat'
 
 
 const cards = require('../data/events.json')
@@ -61,6 +62,9 @@ export default class Picker extends Component {
                 <CardItem>
                   <Icon name="heart" style={{ color: '#ED4A6A' }} />
                   <Text>{item.name}</Text>
+                </CardItem>
+                <CardItem>
+                  <Text>ha</Text>
                 </CardItem>
               </Card>
             }
