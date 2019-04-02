@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
-const cards = [
-  {
-    text: 'Card One',
-    name: 'One',
-    image: require('./img/Ragtime.png'),
-  }
-];
+import { Button , Image } from 'react-native'
+import { Container, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Right, Body, Icon } from 'native-base';
+import { goToEvent } from './navigation';
+import { EventProfile } from '../event/EventProfile';
+import { Navigation } from 'react-native-navigation';
+// import 'dateformat'
+
+
+const cards = require('../data/events.json')
 export default class Picker extends Component {
+  goToEvent = async () => {
+    try {
+       goToEvent()
+    } catch (err) {
+      console.log('error: fail to to event', err)
+    }
+  }
   render() {
     return (
        <Container>
@@ -19,19 +26,45 @@ export default class Picker extends Component {
               <Card style={{ elevation: 3 }}>
                 <CardItem>
                   <Left>
-                    <Thumbnail source={item.image} />
+                    <Thumbnail source={{uri: item.image}} />
                     <Body>
                       <Text>{item.text}</Text>
-                      <Text note>NativeBase</Text>
+                      <Text note>{item.organization}</Text>
                     </Body>
                   </Left>
+                  <Right>
+                    <Icon
+                      size = {50}
+                      style={{ color: 'green'}}
+                      onPress={() => Navigation.showModal({
+                                stack: {
+                                  children: [{
+                                    component: {
+                                      name: 'EventProfile',
+                                      passProps: {
+                                        event: item
+                                      },
+                                      options: {
+                                        topBar: {
+                                          visible: false
+                                        }
+                                      }
+                                    }
+                                  }]
+                                }
+                              })}
+                      name= 'information-circle'/>
+                  </Right>
                 </CardItem>
                 <CardItem cardBody>
-                  <Image style={{ height: 300, flex: 1 }} source={item.image} />
+                  <Image style={{ height: 300, flex: 1 }} source={{uri: item.image}} />
                 </CardItem>
                 <CardItem>
                   <Icon name="heart" style={{ color: '#ED4A6A' }} />
                   <Text>{item.name}</Text>
+                </CardItem>
+                <CardItem>
+                  <Text>ha</Text>
                 </CardItem>
               </Card>
             }

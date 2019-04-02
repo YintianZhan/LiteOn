@@ -1,0 +1,144 @@
+[
+      {
+        "text": "Ragtime",
+        "name": "Ragtime",
+        "image": "https://upload.wikimedia.org/wikipedia/en/f/f6/Ragtime_%28musical%29_%28cast_recording_-_cover_art%29.jpg",
+        "organization": "DolphinShow",
+        "genre": "Musical",
+        "description": "Ragtime tells the story of three groups in the United States in the early 20th century: African Americans, upper-class suburbanites, in New Rochelle, and Eastern European immigrants.",
+        "startdate": "Jun 9 2019",
+        "cast": {
+          "length" : 2,
+          "casts": [
+            {
+              "id" : "Rag",
+              "char" : "Rag",
+              "pic" : "https://upload.wikimedia.org/wikipedia/en/1/14/SpongeBob_SquarePants_characters_by_Screen_Novelties.jpg",
+              "actor" : "SpongeBob"
+            },
+            {
+              "id" : "Time",
+              "char" : "Time",
+              "pic" : "https://www.meme-arsenal.com/memes/13540e08828c57dbe1dddbf8e6e68aba.jpg",
+              "actor" : "Patrick"
+            },
+          ]
+        },
+      },
+      {
+        "text": "Les Miserables",
+        "name": "Les Miserables",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/9/99/Ebcosette.jpg",
+        "organization": "The Miserable Group",
+        "genre": "Musical",
+        "description": "Set in early 19th-century France, Les Misérables is the story of Jean Valjean, a French peasant, and his desire for redemption after serving nineteen years in jail for having stolen a loaf of bread for his sister's starving child.",
+        "startdate": "Jun 9 2019",
+        "cast": {
+          "length" : 2,
+          "casts": [
+            {
+              "id" : "Les",
+              "char" : "Les",
+              "pic" : "https://upload.wikimedia.org/wikipedia/en/1/14/SpongeBob_SquarePants_characters_by_Screen_Novelties.jpg",
+              "actor" : "SpongeBob"
+            },
+            {
+              "id" : "Miserables",
+              "char" : "Miserables",
+              "pic" : "https://www.meme-arsenal.com/memes/13540e08828c57dbe1dddbf8e6e68aba.jpg",
+              "actor" : "Patrick"
+            },
+          ]
+        },
+      },
+      {
+        "text": "Hamilton",
+        "name": "Hamilton",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/9/92/Lin-Manuel_Miranda_in_Hamilton.jpg",
+        "organization": "The Foudding Fathers",
+        "genre": "Musical",
+        "description": "the life of American Founding Father Alexander Hamilton, with music, lyrics and book by Lin-Manuel Miranda, inspired by the 2004 biography Alexander Hamilton by historian Ron Chernow",
+        "startdate": "Jun 9 2019",
+        "cast": {
+          "length" : 1,
+          "casts": [
+            {
+              "id" : "Hamilton",
+              "char" : "Hamilton",
+              "pic" : "https://upload.wikimedia.org/wikipedia/en/1/14/SpongeBob_SquarePants_characters_by_Screen_Novelties.jpg",
+              "actor" : "SpongeBob"
+            },
+          ]
+        },
+      },
+      {
+        "text": "MacBeth",
+        "name": "MacBeth",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Thomas_Keene_in_Macbeth_1884_Wikipedia_crop.png",
+        "startdate": "Jun 9 2019",
+        "organization": "Cursed",
+        "genre": "Play",
+        "description": "a tragedy by William Shakespeare",
+        "cast": {
+          "length" : 1,
+          "casts": [
+            {
+              "id" : "Macbeth",
+              "char" : "Macbeth",
+              "pic" : "https://upload.wikimedia.org/wikipedia/en/1/14/SpongeBob_SquarePants_characters_by_Screen_Novelties.jpg",
+              "actor" : "SpongeBob"
+            },
+          ]
+        },
+      },
+      {
+        "text": "Harry Porter and the Cursed Child",
+        "name": "Harry Potter and the Cursed Child",
+        "image": "https://upload.wikimedia.org/wikipedia/en/4/45/Harry_Potter_Cursed_Child_Play.jpg",
+        "organization": "Ravenclaw",
+        "genre": "Play",
+        "description": "a British two-part stage play written by Jack Thorne based on an original story by Thorne, J. K. Rowling and John Tiffany.",
+        "startdate": "Jun 9 2019",
+        "cast": {
+          "length" : 2,
+          "casts": [
+            {
+              "id" : "Harry Potter",
+              "char" : "Harry Potter",
+              "pic" : "https://upload.wikimedia.org/wikipedia/en/1/14/SpongeBob_SquarePants_characters_by_Screen_Novelties.jpg",
+              "actor" : "SpongeBob"
+            },
+            {
+              "id" : "Ron Weasley",
+              "char" : "Ron Weasley",
+              "pic" : "https://www.meme-arsenal.com/memes/13540e08828c57dbe1dddbf8e6e68aba.jpg",
+              "actor" : "Patrick"
+            },
+            {
+              "id" : "Hermione Granger",
+              "char" : "Hermione Granger",
+              "pic" : "https://thespinoff.co.nz/wp-content/uploads/2017/03/sandy-1-850x510.jpg",
+              "actor" : "Sandy"
+            },
+            {
+              "id" : "Ginny Potter",
+              "char" : "Ginny Potter",
+              "pic" : "https://www.dailydot.com/wp-content/uploads/93c/fb/72b8c984c5ff079598aecd33489a0a9b.jpg",
+              "actor" : "Mr Krabs"
+            },
+            {
+              "id" : "Draco Malfoy",
+              "char" : "Draco Malfoy",
+              "pic" : "https://s24193.pcdn.co/wp-content/uploads/2017/06/Madilyn-Smith-Entity-Squidward1-1320x720.png",
+              "actor" : "Squidward"
+            },
+            {
+              "id" : "Scorpius Malfoy",
+              "char" : "Scorpius Malfoy",
+              "pic" : "https://topicimages.mrowl.com/large/gracie/spongebobsquar/thecharacters/mrspuff_1.jpg",
+              "actor" : "Mrs Puff"
+            },
+          ]
+        },
+      },
+]
