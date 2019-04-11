@@ -15,5 +15,5 @@ If things don't work out, try also running `npm install --save firebase`
 
 # Running
 
-In ternimal in the root folder (`LiteOn/Lite`) of the app run
+In terminal in the root folder (`LiteOn/Lite`) of the app run
 `npm install` and then `react-native run-ios`
