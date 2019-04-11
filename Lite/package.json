@@ -8,13 +8,14 @@
   },
   "dependencies": {
     "dateformat": "^3.0.3",
+    "firebase": "^5.9.3",
     "native-base": "^2.12.0",
     "react": "16.6.3",
     "react-native": "^0.58.6",
     "react-native-elements": "^1.0.0",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-material-bottom-navigation": "^1.0.2",
-    "react-native-navigation": "^2.0.2641",
+    "react-native-navigation": "^2.17.0",
     "react-native-scrollable-tab-view": "^0.10.0",
     "react-native-vector-icons": "^6.3.0"
   },

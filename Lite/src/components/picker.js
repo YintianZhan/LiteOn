@@ -4,16 +4,23 @@ import { Container, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Rig
 import { goToEvent } from './navigation';
 import { EventProfile } from '../event/EventProfile';
 import { Navigation } from 'react-native-navigation';
+import {db} from '../config'
 // import 'dateformat'
 
 
-const cards = require('../data/events.json')
+const cards = require('../data/events.json');
+let liveCards = null
+const eventRef = db.ref();
+eventRef.once('value', (snap) => {
+  liveCards = snap.val()
+})
+
 export default class Picker extends Component {
   goToEvent = async () => {
     try {
-       goToEvent()
+      goToEvent();
     } catch (err) {
-      console.log('error: fail to to event', err)
+      console.log("error: fail to to event", err);
     }
   }
   render() {
@@ -21,7 +28,7 @@ export default class Picker extends Component {
        <Container>
         <View>
           <DeckSwiper
-            dataSource={cards}
+            dataSource={liveCards}
             renderItem={item =>
               <Card style={{ elevation: 3 }}>
                 <CardItem>
