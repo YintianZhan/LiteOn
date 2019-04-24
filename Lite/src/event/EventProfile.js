@@ -6,13 +6,14 @@ import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Casts from './Casts'
+import Comments from './Comments'
 
 
 export default class EventProfile extends Component {
 
   render() {
     return (
-      <ScrollView style={{backgroundColor: '#586589', flex: 1}}>
+      <View style={{flex: 1}}>
         <Header>
           <Left>
             <Button onPress={() => Navigation.dismissModal(this.props.componentId) }
@@ -21,43 +22,42 @@ export default class EventProfile extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>{this.props.event.text}</Title>
+            <Title>{this.props.event.genre}</Title>
           </Body>
           <Right/>
         </Header>
-        <View>
-          <Container style = {cardContainer}>
-            <Image style={cardImage} source={{uri: this.props.event.image}} />
-            <View style={cardDetails}>
-							<Text style={cardTitle}>{this.props.event.text}</Text>
-							<Text style={cardTagline}>{this.props.event.description}</Text>
-							<View style={cardGenre}>
-								<Text>
-									{this.props.event.genre}
-								</Text>
-							</View>
-							<View style={cardNumbers}>
-								<View style={cardStar}>
-									{iconStar}
-									<Text style={cardStarRatings}>8.9</Text>
-								</View>
-								<Text style={cardRunningHours} />
-							</View>
-						</View>
-          </Container>
-        </View>
-        <View style={contentContainer}>
-          <ScrollableTabView
-              style={{marginTop: 20, }}
-              initialPage={1}
-              renderTabBar={() => <DefaultTabBar />}
-          >
-              <Text tabLabel='INFO'>{this.props.event.description}</Text>
-              <Casts tabLabel='CAST' info={this.props.event.cast.casts} length = {this.props.event.cast.length}/>
-              <Text tabLabel='COMMENTS'>Comments</Text>
-          </ScrollableTabView>
-				</View>
-      </ScrollView>
+        <ScrollView style={{backgroundColor: '#586589', flex: 1}}>
+          <View>
+            <Container style = {cardContainer}>
+              <Image style={cardImage} source={{uri: this.props.event.image}} />
+              <View style={cardDetails}>
+  							<Text style={cardTitle}>{this.props.event.text}</Text>
+                <View style = {cardTaglineView}>
+                  <Text style={cardTagline}>{this.props.event.description}</Text>
+                </View>
+  							<View style={cardNumbers}>
+  								<View style={cardStar}>
+  									{iconStar}
+  									<Text style={cardStarRatings}>8.9</Text>
+  								</View>
+  								<Text style={cardRunningHours} />
+  							</View>
+  						</View>
+            </Container>
+          </View>
+          <View style={contentContainer}>
+            <ScrollableTabView
+                style={{marginTop: 20, }}
+                initialPage={1}
+                renderTabBar={() => <DefaultTabBar />}
+            >
+                <Text tabLabel='INFO'>{this.props.event.description}</Text>
+                <Casts tabLabel='CAST' info={this.props.event.cast.casts} length = {this.props.event.cast.length}/>
+                <Comments tabLabel='COMMENTS'>Comments</Comments>
+            </ScrollableTabView>
+  				</View>
+        </ScrollView>
+      </View>
     )
   }
 }
@@ -73,8 +73,8 @@ const cardContainer = {
 }
 
 const cardImage = {
-		height: 184,
-		width: 135,
+		height: 220,
+		width: 160,
 		borderRadius: 3
 }
 
@@ -89,6 +89,14 @@ const cardTitle = {
 		fontSize: 19,
 		fontWeight: '500',
 		paddingTop: 10
+}
+
+const cardTaglineView = {
+    flex: 0,
+    backgroundColor: '#586589',
+    height: 60,
+    height: 160,
+		width: 180,
 }
 
 const	cardTagline = {
