@@ -14,7 +14,7 @@ eventRef.once('value', (snap) => {
 })
 
 for (var name in cards) {
-    NumberArr.push({ show: cards[name].name, time: 'July' });
+    NumberArr.push({ show: cards[name].name, time: cards[name].organization });
 }
 export default class App extends React.Component {
 
@@ -69,7 +69,23 @@ export default class App extends React.Component {
             height:60,
             backgroundColor:'black',
         }}
-        onPress={()=>{this.showClicked(item)}}
+        onPress={() => Navigation.showModal({
+                  stack: {
+                    children: [{
+                      component: {
+                        name: 'EventProfile',
+                        passProps: {
+                          event: cards[index]
+                        },
+                        options: {
+                          topBar: {
+                            visible: false
+                          }
+                        }
+                      }
+                    }]
+                  }
+                })}
     >
     <View style={{backgroundColor:'white',
             height:59,justifyContent: 'center',
