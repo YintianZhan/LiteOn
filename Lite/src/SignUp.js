@@ -10,6 +10,19 @@ export default class SignUp extends Component {
   state = {
     username: '', password: '', email: '', phone_number: ''
   }
+
+  /// Potential Bug
+  handleSignUp = () => {
+    // TODO: Firebase stuff...
+    handleSignUp = () => {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => this.props.navigation.navigate('Main')) //TODO
+        .catch(error => this.setState({ errorMessage: error.message })) //TODO
+    }
+  }
+
   onChangeText = (key, val) => {
     this.setState({ [key]: val })
   }

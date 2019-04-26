@@ -18,7 +18,7 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       component: {
-        name: 'Initializing'
+        name: 'Loading' // was 'Initializing' here
       }
     },
   });
