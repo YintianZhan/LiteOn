@@ -7,6 +7,12 @@ import Picker from './components/picker'
 import FooterTabs from './components/footertab'
 
 export default class Home extends Component {
+
+  componentDidMount() {
+    const { currentUser } = firebase.auth()
+    this.setState({ currentUser })
+}
+
   render() {
     return (
         <View style={{backgroundColor: '#586589', flex: 1}}>

@@ -11,4 +11,5 @@ export function registerScreens() {
   Navigation.registerComponent('OrgProfile', () => require('./OrgProfile').default);
   Navigation.registerComponent('EventProfile', () => require('./event/EventProfile').default);
   Navigation.registerComponent('OrgHome', () => require('./OrgHome').default);
+  Navigation.registerComponent('Loading', () => require('./Loading').default);
 }

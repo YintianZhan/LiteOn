@@ -16,6 +16,16 @@ export default class SignIn extends Component {
   state = {
     username: '', password: ''
   }
+  
+  handleLogin = () => {
+    const { email, pasword } = this.state
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.props.navigation.navigate('Main'))
+      .catch(error => this.setState({ errorMessage: error.message }))
+  }
+
   onChangeText = (key, value) => {
     this.setState({ [key]: value })
   }
