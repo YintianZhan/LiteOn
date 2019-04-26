@@ -13,21 +13,25 @@ const eventRef = db.ref();
 eventRef.once('value', (snap) => {
   cards = snap.val()
 })*/
-
+var tempt = 0;
 for (var name in cards) {
-	NumberArr.push({ show: cards[name].name, time: cards[name].startdate, img: cards[name].image });
+	NumberArr.push({ show: cards[name].name, time: cards[name].startdate, img: cards[name].image, index: tempt });
+	tempt++;
 }
 export default class App extends React.Component {
-	state = {
-	search: '',
+
+	
+  state = {
+   search: '',
     NumberArr:NumberArr,
   };
 
   updateSearch = search => {
-	this.setState({ search });
+    this.setState({ search });
   }; 
 
   onChanegeTextKeyword(text){
+	  this.setState({ search:text });
 		  if (text==='') {
 			  this.setState({
 				  NumberArr:NumberArr,
@@ -54,7 +58,7 @@ showClicked(item){
     return(
       <TouchableOpacity style={{flex:1,
                                 height:100,
-                                backgroundColor:'black',
+                                backgroundColor:'gray',
                         }}
   onPress={() => Navigation.showModal({
 	  stack: {
@@ -110,9 +114,9 @@ showClicked(item){
 </Header>
       <SearchBar
         placeholder="Type Here..."
-		onChange={this.updateSearch} 
+//		onChange={this.updateSearch} 
         onChangeText={this.onChanegeTextKeyword.bind(this)}
-        value={search}
+      //  value={search}
       />
       <FlatList style={{backgroundColor:'white',flex:1}}
       data = {this.state.NumberArr}
