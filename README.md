@@ -1,20 +1,19 @@
 # LiteOn
 
-#installation
+## Installation
 
-install react-native-navigation
+Install react-native-navigation
 follow https://wix.github.io/react-native-navigation/#/docs/Installing
 
-install native-base by
-npm install native-base --save
+install native-base by running
+`npm install native-base --save`
 
 install react-native-scrollable-tab-view
-npm react-native-scrollable-tab-view --save
+`npm install react-native-scrollable-tab-view --save`
 
-#running
+If things don't work out, try also running `npm install --save firebase`
 
-in ternimal in the root folder of the app run
-npm install 
+# Running
 
-and than
-react-native run-ios
+In terminal in the root folder (`LiteOn/Lite`) of the app run
+`npm install` and then `react-native run-ios`

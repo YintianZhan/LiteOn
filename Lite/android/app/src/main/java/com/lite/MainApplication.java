@@ -50,12 +50,12 @@ public class MainApplication extends NavigationApplication {
 
 
     protected List<ReactPackage> getPackages() {
-        // Add additional packages you require here
-        // No need to add RnnPackage and MainReactPackage
-        return Arrays.<ReactPackage>asList(
-                // eg. new VectorIconsPackage()
-        );
 
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+            new RNGestureHandlerPackage(),
+            new VectorIconsPackage()
+      );
     }
 
 
