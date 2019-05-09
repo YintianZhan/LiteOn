@@ -26,6 +26,8 @@ export default class PersonalProfile extends Component {
 }
 */
 
+
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -34,44 +36,63 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import { Navigation } from "react-native-navigation";
+import {
+  Container,
+  Header,
+  Left,
+  Body,
+  Right,
+  Button,
+  Icon,
+  Title
+} from "native-base";
 
 export default class ProfileView extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-          <View style={styles.header}>
-            <Button onPress={() => Navigation.dismissModal(this.props.componentId)}
-                    transparent>
-              <Icon name= "arrow-back" />
+        <Header>
+          <Left>
+            <Button
+              onPress={() => Navigation.dismissModal(this.props.componentId)}
+              transparent>
+              <Icon name="arrow-back" />
             </Button>
-            <View style={styles.headerContent}>
+          </Left>
+          <Body>
+            <Title>My Profile</Title>
+          </Body>
+          <Right>
+            <Text>Log Out</Text>
+          </Right>
+        </Header>
+
+        <View style={styles.header}>
+          <View style={styles.headerContent}>
                 <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar2.png'}}/>
                 <Text style={styles.name}>
-                  Tony Zhang
+                  Ian Horswill
                 </Text>
-            </View>
           </View>
+        </View>
 
-          <View style={styles.profileDetail}>
+        <View style={styles.profileDetail}>
             <View style={styles.detailContent}>
               <Text style={styles.title}>Watched</Text>
-              <Text style={styles.count}>200</Text>
+              <Text style={styles.count}>17</Text>
             </View>
             <View style={styles.detailContent}>
-              <Text style={styles.title}>Rated</Text>
-              <Text style={styles.count}>200</Text>
+              <Text style={styles.title}>Coming Up</Text>
+              <Text style={styles.count}>2</Text>
             </View>
-          </View>
-
-          <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Opcion 1</Text>  
-              </TouchableOpacity> 
-              <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
+            <View style={styles.detailContent}>
+              <Text style={styles.title}>Favorite</Text>
+              <Text style={styles.count}>4</Text>
             </View>
         </View>
+
       </View>
     );
   }
@@ -82,16 +103,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#586589",
   },
   headerContent:{
-    padding:30,
+    padding:20,
     alignItems: 'center',
   },
   avatar: {
-    width: 130,
-    height: 130,
-    borderRadius: 63,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
     borderWidth: 4,
     borderColor: "white",
-    marginBottom:10,
+    marginBottom:0,
   },
   name:{
     fontSize:22,
@@ -100,7 +121,7 @@ const styles = StyleSheet.create({
   },
   profileDetail:{
     alignSelf: 'center',
-    marginTop:200,
+    marginTop: 240,
     alignItems: 'center',
     flexDirection: 'row',
     position:'absolute',
@@ -121,7 +142,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     padding:30,
-    marginTop:40
+    marginTop:400
   },
   textInfo:{
     fontSize:18,
@@ -129,7 +150,7 @@ const styles = StyleSheet.create({
     color: "#696969",
   },
   buttonContainer: {
-    marginTop:10,
+    marginTop:100,
     height:45,
     flexDirection: 'row',
     justifyContent: 'center',
