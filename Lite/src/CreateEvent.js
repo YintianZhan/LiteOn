@@ -68,6 +68,7 @@ export default class CreateEvent extends Component {
               />
             </Button>
           </Body>
+          <Right />
         </Header>
       </View>
     );

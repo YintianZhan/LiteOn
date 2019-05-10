@@ -50,6 +50,7 @@ import {
 
 export default class ProfileView extends Component {
 
+
   render() {
     return (
       <View style={styles.container}>
@@ -65,7 +66,12 @@ export default class ProfileView extends Component {
             <Title>My Profile</Title>
           </Body>
           <Right>
-            <Text>Log Out</Text>
+
+            <Button
+              onPress={() => Navigation.dismissModal(this.props.componentId)}
+              transparent>
+              <Text> Log Out </Text>
+            </Button>
           </Right>
         </Header>
 
@@ -73,7 +79,7 @@ export default class ProfileView extends Component {
           <View style={styles.headerContent}>
                 <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar2.png'}}/>
                 <Text style={styles.name}>
-                  Ian Horswill
+                  Tony Zhang
                 </Text>
           </View>
         </View>
