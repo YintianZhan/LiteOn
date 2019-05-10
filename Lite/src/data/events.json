@@ -6,6 +6,7 @@
         "organization": "DolphinShow",
         "genre": "Musical",
         "description": "Ragtime tells the story of three groups in the United States in the early 20th century: African Americans, upper-class suburbanites, in New Rochelle, and Eastern European immigrants.",
+        "startdate": "Jun 9 2019",
         "cast": {
           "length" : 2,
           "casts": [
@@ -28,9 +29,10 @@
         "text": "Les Miserables",
         "name": "Les Miserables",
         "image": "https://upload.wikimedia.org/wikipedia/commons/9/99/Ebcosette.jpg",
-        "organization": "The Miserable Group",
+        "organization": "Random Artist",
         "genre": "Musical",
         "description": "Set in early 19th-century France, Les Misérables is the story of Jean Valjean, a French peasant, and his desire for redemption after serving nineteen years in jail for having stolen a loaf of bread for his sister's starving child.",
+        "startdate": "Jun 9 2019",
         "cast": {
           "length" : 2,
           "casts": [
@@ -53,9 +55,10 @@
         "text": "Hamilton",
         "name": "Hamilton",
         "image": "https://upload.wikimedia.org/wikipedia/commons/9/92/Lin-Manuel_Miranda_in_Hamilton.jpg",
-        "organization": "The Foudding Fathers",
+        "organization": "DolphinShow",
         "genre": "Musical",
         "description": "the life of American Founding Father Alexander Hamilton, with music, lyrics and book by Lin-Manuel Miranda, inspired by the 2004 biography Alexander Hamilton by historian Ron Chernow",
+        "startdate": "Jun 9 2019",
         "cast": {
           "length" : 1,
           "casts": [
@@ -72,6 +75,7 @@
         "text": "MacBeth",
         "name": "MacBeth",
         "image": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Thomas_Keene_in_Macbeth_1884_Wikipedia_crop.png",
+        "startdate": "Jun 9 2019",
         "organization": "Cursed",
         "genre": "Play",
         "description": "a tragedy by William Shakespeare",
@@ -91,9 +95,10 @@
         "text": "Harry Porter and the Cursed Child",
         "name": "Harry Potter and the Cursed Child",
         "image": "https://upload.wikimedia.org/wikipedia/en/4/45/Harry_Potter_Cursed_Child_Play.jpg",
-        "organization": "Ravenclaw",
+        "organization": "DolphinShow",
         "genre": "Play",
         "description": "a British two-part stage play written by Jack Thorne based on an original story by Thorne, J. K. Rowling and John Tiffany.",
+        "startdate": "Jun 9 2019",
         "cast": {
           "length" : 2,
           "casts": [
