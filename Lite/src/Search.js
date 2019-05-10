@@ -1,21 +1,30 @@
 import React from 'react';
 import { SearchBar } from 'react-native-elements';
-import {  AppRegistry, StyleSheet, Text, View, ScrollView, Dimensions, TextInput, FlatList, TouchableOpacity } from 'react-native';
+import {  AppRegistry, StyleSheet, Text, View, ScrollView, Dimensions, TextInput, FlatList, TouchableOpacity, Image } from 'react-native';
 import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 import { Navigation } from 'react-native-navigation'
 import { db } from './config'
 
 var  NumberArr = [];
 const cards = require('./data/events.json')
-let liveCards = null
-const eventRef = db.ref();
-eventRef.once('value', (snap) => {
-  liveCards = snap.val()
-})
+let liveCards = null;
+const eventRef = db.ref("/events");
+eventRef.once("value", snap => {
+  liveCards = snapshotToArray(snap.val());
+});
 
-for (var name in cards) {
-    NumberArr.push({ show: cards[name].name, time: cards[name].organization });
+function snapshotToArray(snapshot) {
+  return Object.keys(snapshot).map(key => {
+    return snapshot[key];
+  });
 }
+
+var tempt = 0;
+for (var name in cards) {
+	NumberArr.push({ show: cards[name] });
+	tempt++;
+}
+
 export default class App extends React.Component {
 
 
@@ -50,7 +59,7 @@ export default class App extends React.Component {
                 var tempt = [];
                 var t = 0;
                 for (var i = 0; i < NumberArr.length; i++) {
-                    if (NumberArr[i].show.indexOf(text) != -1 || NumberArr[i].time.indexOf(text) != -1) {
+                    if (NumberArr[i].show.name.indexOf(text) != -1 || NumberArr[i].show.organization.indexOf(text) != -1) {
                         tempt.push(NumberArr[i]);
                     }
                 }this.setState({
@@ -61,7 +70,7 @@ export default class App extends React.Component {
         },500);
     }
     showClicked(item){
-        alert(item.show);
+        alert(item.show.name);
     }
     renderItemView({item,index}){
         return(
@@ -75,7 +84,7 @@ export default class App extends React.Component {
                       component: {
                         name: 'EventProfile',
                         passProps: {
-                          event: cards[index]
+                          event: item.show
                         },
                         options: {
                           topBar: {
@@ -87,11 +96,14 @@ export default class App extends React.Component {
                   }
                 })}
     >
-    <View style={{backgroundColor:'white',
-            height:59,justifyContent: 'center',
-            alignItems: 'flex-start'}}>
-    <Text>{item.show}</Text>
-        </View>
+    <View  style={{flex: 1, flexDirection: 'row', backgroundColor:'white',
+			height:98,alignItems: 'flex-start', borderWidth: 1}}>
+			<Image style= { { width: 100, height: 100}}
+				source= {{ uri: item.show.image }} />
+			<View style={{justifyContent: 'center', width: 200}}>
+				<Text style= { {fontSize: 24}}>{item.show.name}</Text>
+			</View>
+	   </View>
         </TouchableOpacity>
     );
     }
