@@ -4,8 +4,7 @@ import {StyleSheet,Text,View,Image,TouchableOpacity,Button, Icon, ScrollView, Fl
 var  ComingUp = [];
 var past_Activity = [];
 
-const cards = require('./src/data/events.json');
-const organization = require('./src/data/Organization1.json')
+const cards = require('./data/events.json');
 /*let cards = null;
 const eventRef = db.ref();
 eventRef.once('value', (snap) => {
@@ -16,7 +15,7 @@ var oName = "DolphinShow"
 for (var name in cards) {
 	if(oName == cards[name].organization)
 	{
-	ComingUp.push({ show: cards[name].name, time: cards[name].startdate, img: cards[name].image, index: tempt });
+	ComingUp.push({ info: cards[name] });
 	tempt++;
 	}
 }
@@ -39,7 +38,7 @@ export default class ProfileView extends Component {
 			  component: {
 				  name: 'EventProfile',
 				  passProps: {
-					  event: NumberArr[index]
+					  event: cards[index]
 				  },
 				  options: {
 					  topBar: {
@@ -72,20 +71,6 @@ onPress2 = () => { this.setState({NumberArr: ComingUp})}
 
   render() {
   return (
-          <View style={{backgroundColor: '#586589', flex: 1}}>
-			<Header>
-				<Left>
-				<Button onPress={() => Navigation.dismissModal(this.props.componentId)}
-								transparent>
-					<Icon name='arrow-back' />
-				</Button>
-				</Left>
-			<Body>
-				<Title>Dolphin Show</Title>
-				</Body>
-				<Right/>
-			</Header>
-		</View>
         <ScrollView style={styles.container}>
           <View style={styles.header}>
             <Button onPress={() => Navigation.dismissModal(this.props.componentId)}
