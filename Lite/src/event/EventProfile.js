@@ -6,13 +6,28 @@ import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Casts from './Casts'
+import Comments from './Comments'
 
 
 export default class EventProfile extends Component {
+	state = {
+		modalVisible: false,
+		starCount: 3.5
+	};
+
+	setModalVisible(visible) {
+		this.setState({modalVisible: visible});
+	}
+
+	onStarRatingPress(rating) {
+		this.setState({
+			starCount: rating
+		});
+	}
 
   render() {
     return (
-      <ScrollView style={{backgroundColor: '#586589', flex: 1}}>
+      <View style={{flex: 1}}>
         <Header>
           <Left>
             <Button onPress={() => Navigation.dismissModal(this.props.componentId) }
@@ -21,43 +36,68 @@ export default class EventProfile extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>{this.props.event.text}</Title>
+            <Title>{this.props.event.genre}</Title>
           </Body>
           <Right/>
         </Header>
-        <View>
-          <Container style = {cardContainer}>
-            <Image style={cardImage} source={{uri: this.props.event.image}} />
-            <View style={cardDetails}>
-							<Text style={cardTitle}>{this.props.event.text}</Text>
-							<Text style={cardTagline}>{this.props.event.description}</Text>
-							<View style={cardGenre}>
-								<Text>
-									{this.props.event.genre}
-								</Text>
-							</View>
-							<View style={cardNumbers}>
-								<View style={cardStar}>
-									{iconStar}
-									<Text style={cardStarRatings}>8.9</Text>
-								</View>
-								<Text style={cardRunningHours} />
-							</View>
+        <ScrollView style={{backgroundColor: '#586589', flex: 1}}>
+          <View>
+            <Container style = {cardContainer}>
+              <Image style={cardImage} source={{uri: this.props.event.image}} />
+              <View style={cardDetails}>
+  							<Text style={cardTitle}>{this.props.event.text}</Text>
+                <View style = {cardTaglineView}>
+                  <Text style={cardTagline}>{this.props.event.description}</Text>
+                </View>
+				<Modal
+					animationType="slide"
+					transparent={true}
+					visible={this.state.modalVisible}
+					onRequestClose={()=>this.setState({visibility:false})}
+				>
+					<View style={styles.container}>
+						<View style={styles.modalContainer}>
+							<StarRating
+								disabled={false}
+								maxStars={5}
+								rating={this.state.starCount}
+								selectedStar={(rating) => this.onStarRatingPress(rating)}
+								fullStarColor= { "yellow" } />
+						<View> 
+						<TouchableHighlight onPress={() => {
+							this.setModalVisible(!this.state.modalVisible);
+						}}>
+						<Text style= {styles.modalMessage}>Submit</Text>
+						</TouchableHighlight>
 						</View>
-          </Container>
-        </View>
-        <View style={contentContainer}>
-          <ScrollableTabView
-              style={{marginTop: 20, }}
-              initialPage={1}
-              renderTabBar={() => <DefaultTabBar />}
-          >
-              <Text tabLabel='INFO'>{this.props.event.description}</Text>
-              <Casts tabLabel='CAST' info={this.props.event.cast.casts} length = {this.props.event.cast.length}/>
-              <Text tabLabel='COMMENTS'>Comments</Text>
-          </ScrollableTabView>
-				</View>
-      </ScrollView>
+						</View>
+					</View>
+				</Modal>
+
+  				<View style={cardNumbers}>
+  					<View style={cardStar}>
+						<Button title="1" onPress={() => {this.setModalVisible(true);}}>
+  						{iconStar}</Button>
+  						<Text style={cardStarRatings}>{this.state.starCount}</Text>
+  					</View>
+  					<Text style={cardRunningHours} />
+  				    </View>
+  				</View>
+            </Container>
+          </View>
+          <View style={contentContainer}>
+            <ScrollableTabView
+                style={{marginTop: 20, }}
+                initialPage={1}
+                renderTabBar={() => <DefaultTabBar />}
+            >
+                <Text tabLabel='INFO'>{this.props.event.description}</Text>
+                <Casts tabLabel='CAST' info={this.props.event.cast.casts} length = {this.props.event.cast.length}/>
+                <Comments tabLabel='COMMENTS'>Comments</Comments>
+            </ScrollableTabView>
+  				</View>
+        </ScrollView>
+      </View>
     )
   }
 }
@@ -73,8 +113,8 @@ const cardContainer = {
 }
 
 const cardImage = {
-		height: 184,
-		width: 135,
+		height: 220,
+		width: 160,
 		borderRadius: 3
 }
 
@@ -89,6 +129,14 @@ const cardTitle = {
 		fontSize: 19,
 		fontWeight: '500',
 		paddingTop: 10
+}
+
+const cardTaglineView = {
+    flex: 0,
+    backgroundColor: '#586589',
+    height: 60,
+    height: 160,
+		width: 180,
 }
 
 const	cardTagline = {
@@ -148,3 +196,31 @@ const	tabBar = {
 }
 
 const iconStar = <Icon name="ios-star" size={16} color="#F5B642" />
+
+const styles = StyleSheet.create({
+	container:{
+		flex:1,
+		backgroundColor:'rgba(0, 0, 0, 0)',
+		justifyContent:'center',
+		alignItems:'center'
+	},
+	modalContainer: {
+		marginLeft: 20,
+		marginRight: 20,
+		borderRadius: 3,
+		borderWidth: 2, 
+		borderColor: "gray",
+		backgroundColor: "white",
+		alignItems:'center',
+	},
+	modalTitle: {
+		color: '#000000',
+		fontSize: 16,
+		marginTop: 10,
+	},
+	modalMessage:{
+		color:'#8a8a8a',
+		fontSize:14,
+		marginTop:20,
+	},
+})
