@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Title, Text, Button} from 'native-base';
-import { View, Image, ScrollView } from 'react-native';
+import { View, Image, ScrollView, Modal, TouchableHighlight, StyleSheet } from 'react-native';
 import { goHome } from './../components/navigation';
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Casts from './Casts'
 import Comments from './Comments'
+import StarRating from 'react-native-star-rating'
 
 
 export default class EventProfile extends Component {
-
+  state = {
+		modalVisible: false,
+		starCount: 3.5
+	};
+	setModalVisible(visible) {
+		this.setState({modalVisible: visible});
+	}
+	onStarRatingPress(rating) {
+		this.setState({
+			starCount: rating
+		});
+	}
   render() {
     return (
       <View style={{flex: 1}}>
@@ -35,14 +47,39 @@ export default class EventProfile extends Component {
                 <View style = {cardTaglineView}>
                   <Text style={cardTagline}>{this.props.event.description}</Text>
                 </View>
-  							<View style={cardNumbers}>
-  								<View style={cardStar}>
-  									{iconStar}
-  									<Text style={cardStarRatings}>8.9</Text>
-  								</View>
-  								<Text style={cardRunningHours} />
-  							</View>
-  						</View>
+                <Modal
+					animationType="slide"
+					transparent={true}
+					visible={this.state.modalVisible}
+					onRequestClose={()=>this.setState({visibility:false})}
+				>
+					<View style={styles.container}>
+						<View style={styles.modalContainer}>
+							<StarRating
+								disabled={false}
+								maxStars={5}
+								rating={this.state.starCount}
+								selectedStar={(rating) => this.onStarRatingPress(rating)}
+								fullStarColor= { "yellow" } />
+						<View>
+						<TouchableHighlight onPress={() => {
+							this.setModalVisible(!this.state.modalVisible);
+						}}>
+						<Text style= {styles.modalMessage}>Submit</Text>
+						</TouchableHighlight>
+						</View>
+						</View>
+					</View>
+				</Modal>
+          <View style={cardNumbers}>
+  					<View style={cardStar}>
+						<TouchableHighlight title="1" onPress={() => {this.setModalVisible(true);}}>
+  						{iconStar}</TouchableHighlight>
+  						<Text style={cardStarRatings}>{this.state.starCount}</Text>
+  					</View>
+  					<Text style={cardRunningHours} />
+  				    </View>
+  				</View>
             </Container>
           </View>
           <View style={contentContainer}>
@@ -94,7 +131,6 @@ const cardTitle = {
 const cardTaglineView = {
     flex: 0,
     backgroundColor: '#586589',
-    height: 60,
     height: 160,
 		width: 180,
 }
@@ -156,3 +192,31 @@ const	tabBar = {
 }
 
 const iconStar = <Icon name="ios-star" size={16} color="#F5B642" />
+
+const styles = StyleSheet.create({
+	container:{
+		flex:1,
+		backgroundColor:'rgba(0, 0, 0, 0)',
+		justifyContent:'center',
+		alignItems:'center'
+	},
+	modalContainer: {
+		marginLeft: 20,
+		marginRight: 20,
+		borderRadius: 3,
+		borderWidth: 2,
+		borderColor: "gray",
+		backgroundColor: "white",
+		alignItems:'center',
+	},
+	modalTitle: {
+		color: '#000000',
+		fontSize: 16,
+		marginTop: 10,
+	},
+	modalMessage:{
+		color:'#8a8a8a',
+		fontSize:14,
+		marginTop:20,
+	},
+})

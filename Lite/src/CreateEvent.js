@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Header,
-  Left,
-  Body,
-  Right,
-  Button,
-  Icon,
-  Title
-} from "native-base";
-import { View, Alert } from "react-native";
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Text } from "native-base";
+import { View, Alert, StyleSheet, TextInput, ScrollView } from "react-native";
 import { Navigation } from "react-native-navigation";
 import { db } from "./config";
+import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 export default class CreateEvent extends Component {
   writeToFirebase = () => {
@@ -46,6 +38,12 @@ export default class CreateEvent extends Component {
 
     return db.ref().update(updates);
   };
+  state = {
+    username: '', password: ''
+  }
+  onChangeText = (key, value) => {
+    this.setState({ [key]: value })
+  }
   render() {
     return (
       <View style={{ backgroundColor: "#586589", flex: 1 }}>
@@ -60,16 +58,194 @@ export default class CreateEvent extends Component {
           </Left>
           <Body>
             <Title>New Event</Title>
-            <Button onPress={this.writeToFirebase}>
-              <Icon
-                name="firebase"
-                reversed="true"
-                type="MaterialCommunityIcons"
-              />
-            </Button>
           </Body>
+          <Right/>
         </Header>
+        <ScrollView style={{backgroundColor: '#586589', flex: 1}}>
+          <View>
+            <Container style = {cardContainer}>
+              <TextInput
+                  style={cardImage}
+                  placeholder='Image URL'
+                  autoCapitalize="none"
+                  placeholderTextColor='white'
+                  multiline={true} />
+              <View style={cardDetails}>
+  							<TextInput
+                  style={cardTitle}
+                  placeholder='Event Title'
+                  autoCapitalize="none"
+                  placeholderTextColor='white' />
+                <TextInput
+                  style={cardTaglineView}
+                  placeholder='Tagline'
+                  autoCapitalize="none"
+                  placeholderTextColor= 'white'
+                  multiline={true} />
+                <TextInput
+                  style={cardGenreItem}
+                  placeholder='Genre'
+                  autoCapitalize="none"
+                  placeholderTextColor= 'white' />
+  						</View>
+            </Container>
+          </View>
+          <View style={contentContainer}>
+            <ScrollableTabView
+                style={{marginTop: 20, }}
+                initialPage={1}
+                renderTabBar={() => <DefaultTabBar />}
+            >
+                <Text tabLabel='INFO'></Text>
+                <Text tabLabel='CAST'></Text>
+            </ScrollableTabView>
+  				</View>
+        </ScrollView>
+        <TextInput
+          style={input}
+          placeholder='Title'
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholderTextColor='white'
+        />
+        <TextInput
+          style={input}
+          placeholder='Genre'
+          autoCapitalize="none"
+          secureTextEntry={true}
+          placeholderTextColor='white'
+        />
+        <Button>
+          <Icon
+            name="firebase"
+            reversed="true"
+            type="MaterialCommunityIcons"
+          />
+        </Button>
       </View>
     );
   }
+}
+const cardContainer = {
+		flex: 1,
+		position: 'absolute',
+		top: 20,
+		right: 16,
+		left: 16,
+		flexDirection: 'row',
+    backgroundColor: '#586589'
+}
+
+const cardImage = {
+		height: 220,
+		width: 160,
+		borderRadius: 3,
+    fontSize: 17,
+    fontWeight: '500',
+    backgroundColor: '#42A5F5',
+    margin: 10,
+    color: 'white',
+    padding: 8,
+}
+
+const cardDetails = {
+		paddingLeft: 5,
+		flex: 1,
+		paddingTop: 5
+}
+
+const cardTitle = {
+    height: 30,
+    width: 145,
+    borderRadius: 3,
+    fontSize: 17,
+    backgroundColor: '#42A5F5',
+    margin: 10,
+		color: 'white',
+		fontSize: 19,
+		fontWeight: '500',
+		paddingTop: 5,
+    padding: 8,
+}
+
+const cardTaglineView = {
+    flex: 0,
+    borderRadius: 3,
+    backgroundColor: '#42A5F5',
+    margin: 10,
+		color: 'white',
+		fontSize: 15,
+		fontWeight: '500',
+    height: 160,
+		width: 145,
+    padding: 8,
+}
+
+const	cardGenre = {
+    flexDirection: 'row',
+}
+
+const	cardGenreItem = {
+    flex: 0,
+    borderRadius: 3,
+    fontSize: 14,
+    backgroundColor: '#42A5F5',
+    margin: 10,
+    color: 'white',
+    fontWeight: '500',
+    height: 25,
+    width: 70,
+    padding: 4,
+}
+
+const cardNumbers = {
+		flexDirection: 'row',
+		marginTop: 5
+}
+
+const cardStar = {
+		flexDirection: 'row'
+}
+
+const	cardStarRatings = {
+		marginLeft: 5,
+		fontSize: 12,
+		color: 'white'
+}
+
+const cardRunningHours = {
+		marginLeft: 5,
+		fontSize: 12
+}
+
+const contentContainer = {
+		flex: 1,
+		marginTop: 250
+}
+
+const textStyle = {
+		color: 'white',
+		paddingTop: 10,
+		fontSize: 12,
+		fontWeight: 'bold'
+}
+
+const underlineStyle =  {
+		backgroundColor: '#EA0000'
+}
+
+const	tabBar = {
+		backgroundColor: '#131313'
+}
+
+const input = {
+  width: 350,
+  fontSize: 18,
+  fontWeight: '500',
+  height: 55,
+  backgroundColor: '#42A5F5',
+  margin: 10,
+  color: 'white',
+  padding: 8,
+  borderRadius: 14
 }

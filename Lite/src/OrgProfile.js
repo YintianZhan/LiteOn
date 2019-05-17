@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {StyleSheet,Text,View,Image,TouchableOpacity,Button, Icon, ScrollView, FlatList} from 'react-native';
+import {StyleSheet,Text,View,Image,TouchableOpacity,ScrollView, FlatList} from 'react-native';
+import { Header, Left, Body, Right, Title, Icon, Button} from 'native-base'
 import { Navigation } from 'react-native-navigation';
 
 var  ComingUp = [];
 var past_Activity = [];
 
 const cards = require('./data/events.json');
-// const organization = require('./src/data/Organization1.json')
 /*let cards = null;
 const eventRef = db.ref();
 eventRef.once('value', (snap) => {
@@ -17,7 +17,7 @@ var oName = "DolphinShow"
 for (var name in cards) {
 	if(oName == cards[name].organization)
 	{
-	ComingUp.push({ show: cards[name].name, time: cards[name].startdate, img: cards[name].image, index: tempt });
+	ComingUp.push({ info: cards[name], img: cards[name].image, name: cards[name].name, time: cards[name].startdate});
 	tempt++;
 	}
 }
@@ -40,7 +40,7 @@ export default class ProfileView extends Component {
 			  component: {
 				  name: 'EventProfile',
 				  passProps: {
-					  event: cards[index]
+					  event: item.info
 				  },
 				  options: {
 					  topBar: {
@@ -57,7 +57,7 @@ export default class ProfileView extends Component {
 			<Image style= { { width: 100, height: 100}}
 				source= {{ uri: item.img }} />
 			<View style={{justifyContent: 'center', width: 200}}>
-				<Text style= { {fontSize: 24}}>{item.show}</Text>
+				<Text style= { {fontSize: 24}}>{item.name}</Text>
 				<Text> {item.time} </Text>
 			</View>
 	   </View>
@@ -73,31 +73,26 @@ onPress2 = () => { this.setState({NumberArr: ComingUp})}
 
   render() {
   return (
-    // <View style={{backgroundColor: '#586589', flex: 1}}>
-		// 	<Header>
-		// 		<Left>
-		// 		<Button onPress={() => Navigation.dismissModal(this.props.componentId)}
-		// 						transparent>
-		// 			<Icon name='arrow-back' />
-		// 		</Button>
-		// 		</Left>
-		// 	<Body>
-		// 		<Title>Dolphin Show</Title>
-		// 		</Body>
-		// 		<Right/>
-		// 	</Header>
-		// </View>
+    <View>
+      <Header>
+        <Left>
+          <Button
+            onPress={() => Navigation.dismissModal(this.props.componentId)}
+            transparent>
+            <Icon name="arrow-back" />
+          </Button>
+        </Left>
+        <Body>
+          <Title>My Profile</Title>
+        </Body>
+        <Right/>
+      </Header>
         <ScrollView style={styles.container}>
           <View style={styles.header}>
-            <Button onPress={() => Navigation.dismissModal(this.props.componentId)}
-                    transparent
-                    title = "">
-              <Icon name= "arrow-back" />
-            </Button>
             <View style={styles.headerContent}>
                 <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar2.png'}}/>
                 <Text style={styles.name}>
-                  Tony Zhang
+                  DolphinShow
                 </Text>
             </View>
           </View>
@@ -132,6 +127,7 @@ onPress2 = () => { this.setState({NumberArr: ComingUp})}
             </FlatList>
         </View>
       </ScrollView>
+    </View>
     );
   }
 }
