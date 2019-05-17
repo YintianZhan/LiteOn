@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Image } from "react-native";
+import { Button, Image, TouchableOpacity  } from "react-native";
 import {
   Container,
   View,
@@ -40,6 +40,19 @@ export default class Picker extends Component {
       console.log("error: fail to to event", err);
     }
   };
+
+  state = {
+	  loveColor: "FFFFFF",
+  };
+
+  changeColor = () => {
+	  if(loveColor === "gray")
+		this.setState({ loveColor: "#ED4A6A" });
+	  else
+	    this.setState({ loveColor: "gray" });
+  };
+
+  }
   render() {
     return (
       <Container>
@@ -92,7 +105,8 @@ export default class Picker extends Component {
                   />
                 </CardItem>
                 <CardItem>
-                  <Icon name="heart" style={{ color: "#ED4A6A" }} />
+                <TouchableOpacity onPress={this.changeColor}>
+                  <Icon name="heart" style={{ color: {this.state.loveColor} }} /></TouchableOpacity>
                   <Text>{item.name}</Text>
                 </CardItem>
                 <CardItem>
